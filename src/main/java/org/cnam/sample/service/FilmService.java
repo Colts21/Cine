@@ -32,4 +32,18 @@ public class FilmService {
     public Film getFilmByName(String name){
         return filmRepository.findByName(name);
     }
+
+    public String deleteFilm(int id){
+        filmRepository.deleteById(id);
+        return "Film supprimé : " + id;
+    }
+
+    public Film updateFilm(Film film){
+        Film filmExistant=filmRepository.findById(film.getId()).orElse(null);
+        filmExistant.setName(film.getName());
+        filmExistant.setGenre(film.getGenre());
+        filmExistant.setRealisateur(film.getRealisateur());
+        return filmRepository.save(filmExistant);
+    }
 }
+

@@ -28,4 +28,8 @@ public class FilmService {
     public Film getFilmById(int id){
         return filmRepository.findById(id).orElse(null);
     }
+
+    public Film getFilmByName(String name){
+        return filmRepository.findByName(name);
+    }
 }
